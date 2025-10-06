@@ -14,7 +14,7 @@ import {
 import { dashboard } from '@/routes';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/vue3';
-import { BookOpen, Folder, LayoutGrid, ChartColumnBig } from 'lucide-vue-next';
+import { BookOpen, Folder, LayoutGrid, ChartColumnBig, History, Heart, Gamepad2 } from 'lucide-vue-next';
 import AppLogo from './AppLogo.vue';
 
 const mainNavItems: NavItem[] = [
@@ -28,18 +28,31 @@ const mainNavItems: NavItem[] = [
         href: '/leaderboard',
         icon: ChartColumnBig,
     },
+    {
+        title: 'Spilhistorik',
+        href: '/spilhistorik',
+        icon: History,
+    },
 ];
+
+const shortcutNavItems: NavItem[] = [
+    {
+        title: 'Premier League',
+        href: '/premier-league',
+        icon: Gamepad2,
+    }
+]
 
 const footerNavItems: NavItem[] = [
     {
-        title: 'Github Repo',
-        href: 'https://github.com/laravel/vue-starter-kit',
-        icon: Folder,
+        title: 'Regler og Info',
+        href: '/regler-og-info',
+        icon: BookOpen,
     },
     {
-        title: 'Documentation',
-        href: 'https://laravel.com/docs/starter-kits#vue',
-        icon: BookOpen,
+        title: 'Om Start 11',
+        href: '/om-start-11',
+        icon: Heart,
     },
 ];
 </script>
@@ -58,12 +71,17 @@ const footerNavItems: NavItem[] = [
             </SidebarMenu>
         </SidebarHeader>
 
-        <SidebarContent>
-            <NavMain :items="mainNavItems" />
-        </SidebarContent>
+        <div class="flex flex-col gap-6">
+            <SidebarContent>
+                <NavMain :items="mainNavItems" :label="'Platform'" />
+            </SidebarContent>
+            <SidebarContent>
+                <NavMain :items="shortcutNavItems" :label="'Genvej til dit yndlings spil'" />
+            </SidebarContent>
+        </div>
 
-        <SidebarFooter>
-            <NavFooter :items="footerNavItems" />
+        <SidebarFooter class="mt-auto">
+            <NavMain :items="footerNavItems" :label="'Information'" />
             <NavUser />
         </SidebarFooter>
     </Sidebar>

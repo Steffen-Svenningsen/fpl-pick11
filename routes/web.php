@@ -15,6 +15,22 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('leaderboard', function () {
         return Inertia::render('Leaderboard');
     })->name('leaderboard');
+
+    Route::get('spilhistorik', function () {
+        return Inertia::render('Spilhistorik');
+    })->name('spilhistorik');
+
+    Route::get('regler-og-info', function () {
+        return Inertia::render('Rules');
+    })->name('rules');
+
+    Route::get('om-start-11', function () {
+        return Inertia::render('About');
+    })->name('about');
+
+    Route::get('premier-league', function () {
+        return Inertia::render('PremierLeague');
+    })->name('premier-league');
 });
 
 
